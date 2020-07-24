@@ -1,0 +1,9 @@
+#slider .track {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+#slider .thumb {
+    -fx-background-color: #fff0ff;
+    -fx-cursor: hand;
+}

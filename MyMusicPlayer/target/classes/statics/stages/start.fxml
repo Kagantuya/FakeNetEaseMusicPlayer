@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: rgba(255,255,255,0);" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.lucency.controller.StartController">
+    <Circle fx:id="wave" fill="TRANSPARENT" layoutX="960.0" layoutY="540.0" radius="116.0" stroke="#d81e06" strokeType="INSIDE" strokeWidth="5.0">
+      <cursor>
+         <Cursor fx:constant="WAIT" />
+      </cursor></Circle>
+    <SVGPath fx:id="logoNote" content="M714.92608 136.3456a26.48064 26.48064 0 0 0-13.312-28.2624 27.72992 27.72992 0 0 0-37.25312 10.1376l-235.63264 408.2688a189.44 189.44 0 0 0-81.92-85.6064c-81.31584-44.8512-177.0496-29.4912-213.82144 34.304s-0.768 151.7568 80.54784 196.608 177.01888 29.3888 213.79072-34.4064c0.91136-1.6384 1.59744-3.2768 2.42688-4.8128a34.816 34.816 0 0 0 3.072-4.3008l196.864-341.2992c87.18336 108.3392 230.51264 67.7888 230.51264 67.7888-149.03296-40.5504-147.0464-190.2592-145.27488-218.4192z " fill="#d81e06" layoutX="456.0" layoutY="113.0" strokeWidth="0.0" style="-fx-scale-y: 0.2; -fx-scale-x: 0.2;">
+      <cursor>
+         <Cursor fx:constant="WAIT" />
+      </cursor></SVGPath>
+    <SVGPath fx:id="logoDisk" content="M97.16736 297.5744a234.99776 234.99776 0 0 1-162.46784-39.424s-151.64416 272.6912-184.19712 315.904c-20.26496 27.0336-70.85056 53.1456-99.072 57.344a286.26944 286.26944 0 0 0 253.77792 151.4496c157.5936 0 285.31712-124.928 285.31712-278.9376a275.5584 275.5584 0 0 0-93.35808-206.336z m-191.96928 290.7136a84.34688 84.34688 0 1 1 86.272-84.3776 85.34016 85.34016 0 0 1-86.272 84.3776z m179.712 89.1904l-95.5392-96.768a116.81792 116.81792 0 0 0 19.31264-27.9552l120.02304 65.7408a180.91008 180.91008 0 0 1-43.78624 58.9824z" fill="#d81e06" layoutX="1058.0" layoutY="40.0" style="-fx-scale-x: 0.2; -fx-scale-y: 0.2;">
+      <cursor>
+         <Cursor fx:constant="WAIT" />
+      </cursor></SVGPath>
+</AnchorPane>

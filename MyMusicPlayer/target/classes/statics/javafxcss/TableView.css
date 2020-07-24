@@ -1,0 +1,70 @@
+/* 列头样式 */
+.table-view .column-header,
+.table-view .filler,
+.table-view > .column-header-background > .show-hide-columns-button {
+    -fx-background-color: #FFFAFA;
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: #DCDCDC;
+}
+
+.table-view .column-header .label {
+    -fx-alignment: center-left;
+}
+
+/*******************************************************/
+
+/* 禁用横向滚动条 */
+.table-view .scroll-bar:horizontal * {
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+/*******************************************************/
+
+/* 纵向滚动条样式 */
+.table-view .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.table-view .scroll-bar:vertical .track {
+    -fx-background-color: #F7F7F7;
+}
+
+.table-view .scroll-bar:vertical .increment-button,
+.table-view .scroll-bar:vertical .decrement-button {
+    -fx-background-color: #F7F7F7;
+}
+
+.table-view .scroll-bar .increment-arrow,
+.table-view .scroll-bar .decrement-arrow {
+    -fx-background-color: #F7F7F7;
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #CDC9C9;
+    -fx-background-radius: 8em;
+    -fx-border-radius: 8em;
+    -fx-pref-height: 10px;
+}
+
+.table-view .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/*******************************************************/
+
+/* 去除竖线 */
+.table-row-cell:empty .table-cell,
+.table-row-cell .table-cell {
+    -fx-border-width: 0px;
+}
+
+/* 获得焦点的一行样式 */
+.table-row-cell:selected {
+    -fx-background-color: #DCDCDC;
+}

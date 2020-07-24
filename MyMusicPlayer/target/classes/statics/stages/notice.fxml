@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(0, 0, 0, 0);" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.lucency.controller.NoticeController">
+    <AnchorPane fx:id="noticePane" layoutX="125.0" layoutY="170.0" prefHeight="60.0" prefWidth="350.0" style="-fx-background-color: #00BFFF60;">
+        <effect>
+            <DropShadow height="30.0" radius="14.5" width="30.0">
+                <color>
+                    <Color opacity="0.30000001192092896" />
+                </color>
+            </DropShadow>
+        </effect>
+        <Label fx:id="notice" layoutX="71.0" layoutY="10.0" prefHeight="40.0" prefWidth="250.0" textFill="WHITE">
+            <font>
+                <Font name="KaiTi" size="19.0" />
+            </font>
+        </Label>
+      <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);">
+         <graphic>
+            <SVGPath content="M-31.3,467.4c-0.4,0.4-1,0.7-1.6,0.7c-0.6,0-1.2-0.2-1.6-0.7c-0.5-0.4-0.7-1-0.7-1.6c0-0.6,0.2-1.2,0.7-1.6c0.4-0.5,1-0.7,1.6-0.7c0.6,0,1.1,0.2,1.6,0.7c0.5,0.4,0.7,1,0.7,1.6C-30.6,466.4-30.8,466.9-31.3,467.4z M-34.5,452.3c0.4-0.5,1-0.7,1.6-0.7c0.7,0,1.2,0.2,1.6,0.7c0.4,0.5,0.6,1,0.6,1.7c0,0.6-0.9,4.9-1.2,8.1h-2.1c-0.2-3.2-1.2-7.5-1.2-8.1C-35.1,453.4-34.9,452.8-34.5,452.3z M-18.4,467.1l-11.8-20.6c-1.4-2.5-3.8-2.5-5.2,0l-11.8,20.6c-1.4,2.5-0.3,4.6,2.6,4.6H-21C-18.2,471.7-17,469.6-18.4,467.1z" fill="#f2f53f" />
+         </graphic>
+      </Button>
+    </AnchorPane>
+</AnchorPane>

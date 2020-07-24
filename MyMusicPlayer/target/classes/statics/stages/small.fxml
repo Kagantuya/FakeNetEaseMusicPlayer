@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(255, 255, 255, 0);" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.lucency.controller.SmallController">
+   <Label fx:id="musicInfoHide" alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="200.0" opacity="0.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #00BFFF80;" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="KaiTi" size="16.0" />
+      </font>
+      <effect>
+         <DropShadow height="30.0" radius="14.5" width="30.0">
+            <color>
+               <Color opacity="0.30000001192092896" />
+            </color>
+         </DropShadow>
+      </effect></Label>
+    <ToolBar fx:id="toolbar" layoutX="150.0" layoutY="170.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #00BFFF;">
+        <VBox prefHeight="10.0" prefWidth="20.0">
+            <Button fx:id="quit" mnemonicParsing="false" onAction="#quit" style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <graphic>
+                    <SVGPath content="M-42.5,476.9l17.5-17.5l1.5,1.5l-17.5,17.5L-42.5,476.9L-42.5,476.9z M-25.1,478.4l-17.5-17.5l1.5-1.5 l17.5,17.5L-25.1,478.4L-25.1,478.4z" fill="PALETURQUOISE" scaleX="0.5" scaleY="0.5" />
+                </graphic>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
+            <Button fx:id="normal" mnemonicParsing="false" onAction="#normal" style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <graphic>
+                    <SVGPath content="M-18.8,467.1v16.1h-16.1v-16.1H-18.8 M-18.8,465.7h-16.1c-0.7,0-1.3,0.7-1.3,1.3v16.1c0,0.7,0.7,1.3,1.3,1.3h16.1c0.7,0,1.3-0.7,1.3-1.3v-16.1C-17.5,466.4-18.2,465.7-18.8,465.7z" fill="PALETURQUOISE" scaleX="0.6" scaleY="0.4" />
+                </graphic>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
+        </VBox>
+        <Button mnemonicParsing="false" style="-fx-background-color: rgba(255, 255, 255, 0);">
+            <graphic>
+                <SVGPath content="M-32,472.3C-32,472.3-32,472.3-32,472.3l-2.3,0c-0.4,0-0.8,0.3-0.8,0.8v5.4c0,0.4,0.3,0.8,0.8,0.8h2.3c0,0,0,0,0,0v0l5.6,3.6c0.1,0.1,0.3,0.2,0.5,0.2c0.4,0,0.8-0.3,0.8-0.8c0,0,0-0.1,0-0.1v-12.8c0,0,0-0.1,0-0.1c0-0.4-0.3-0.8-0.8-0.8c-0.2,0-0.3,0.1-0.5,0.2L-32,472.3zM-21.4,484.4L-21.4,484.4c2.4-2.1,4-5.2,4-8.7c0-3.5-1.5-6.6-4-8.7l0,0c-0.1-0.1-0.2-0.1-0.4-0.1c-0.3,0-0.6,0.3-0.6,0.6c0,0.1,0,0.3,0.1,0.4l0,0c0,0,0,0,0,0c0,0,0,0,0.1,0.1c2.2,1.9,3.5,4.7,3.5,7.8s-1.4,5.9-3.5,7.8c0,0-0.1,0-0.1,0.1c0,0,0,0,0,0l0,0c-0.1,0.1-0.1,0.2-0.1,0.4c0,0.3,0.3,0.6,0.6,0.6C-21.7,484.5-21.5,484.5-21.4,484.4zM-22.3,480L-22.3,480c1.1-1.1,1.8-2.6,1.8-4.3c0-1.7-0.7-3.2-1.8-4.3l0,0c-0.1-0.1-0.2-0.1-0.3-0.1c-0.3,0-0.6,0.3-0.6,0.6c0,0.1,0,0.2,0.1,0.3l0,0c0,0,0,0,0,0c0,0,0,0,0,0c0.9,0.9,1.4,2.1,1.4,3.4s-0.5,2.5-1.4,3.4c0,0,0,0,0,0c0,0,0,0,0,0l0,0c-0.1,0.1-0.1,0.2-0.1,0.3c0,0.3,0.3,0.6,0.6,0.6C-22.5,480.1-22.4,480.1-22.3,480z" fill="PALETURQUOISE" rotate="180.0" />
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <AnchorPane fx:id="contents" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="0.0" prefWidth="155.0">
+            <Label fx:id="musicInfo" alignment="CENTER" contentDisplay="CENTER" opacity="0.0" prefHeight="50.0" prefWidth="155.0" textFill="WHITE" wrapText="true">
+                <font>
+                    <Font name="KaiTi" size="17.0" />
+                </font>
+            </Label>
+            <Label fx:id="lyric" alignment="TOP_LEFT" layoutY="16.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="155.0" textAlignment="CENTER" textFill="WHITE">
+                <font>
+                    <Font name="KaiTi" size="17.0" />
+                </font>
+            </Label>
+            <ToolBar fx:id="buttons" layoutY="9.0" opacity="0.0" prefHeight="0.0" prefWidth="155.0" style="-fx-background-color: rgba(0, 0, 0, 0);">
+                <Button fx:id="next" mnemonicParsing="false" onAction="#next" prefHeight="23.0" prefWidth="23.0" style="-fx-background-color: rgba(0, 0, 0, 0);">
+                    <graphic>
+                        <SVGPath content="M-125.3,444.8l17.6-11.9c2.1-1.4,5.1-0.1,5.1,2.2v23.7c0,2.3-3,3.6-5.1,2.2l-17.6-11.9C-127,448.1-127,445.9-125.3,444.8z M-132.1,459.9v-15.8v-7.9c0-0.9-0.3-2.9,0.9-3.6c1.4-0.8,3.2,0.1,3.2,1.5v23.7c0,0.9,0.3,2.9-0.9,3.6C-130.2,462.3-132.1,461.4-132.1,459.9L-132.1,459.9z" fill="WHITE" scaleX="0.6" scaleY="0.6" />
+                    </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+                </Button>
+                <Button fx:id="playOrPause" mnemonicParsing="false" onAction="#togglePlay" prefHeight="23.0" prefWidth="23.0" scaleX="1.3" scaleY="1.3" style="-fx-background-color: rgba(0, 0, 0, 0);">
+                    <graphic>
+                        <SVGPath fx:id="playOrPauseSvg" content="M-19.7,467.5c-8.1,0-14.7,6.6-14.7,14.7s6.6,14.7,14.7,14.7S-5,490.4-5,482.3S-11.6,467.5-19.7,467.5z M-19.7,495.8c-7.4,0-13.5-6.1-13.5-13.5s6.1-13.5,13.5-13.5s13.5,6.1,13.5,13.5S-12.3,495.8-19.7,495.8L-19.7,495.8zM-15.1,480.2l-4.9-3.3c-1.7-1.1-3.1-0.4-3.1,1.7v7.4c0,2,1.4,2.8,3.1,1.7l4.9-3.3C-13.5,483.2-13.5,481.3-15.1,480.2z" fill="WHITE" rotate="180.0" scaleX="0.8" scaleY="0.8" />
+                    </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+                </Button>
+                <Button onAction="#previous" fx:id="previous" mnemonicParsing="false" prefHeight="23.0" prefWidth="23.0" style="-fx-background-color: rgba(0, 0, 0, 0);">
+                    <graphic>
+                        <SVGPath content="M-125.3,444.8l17.6-11.9c2.1-1.4,5.1-0.1,5.1,2.2v23.7c0,2.3-3,3.6-5.1,2.2l-17.6-11.9C-127,448.1-127,445.9-125.3,444.8z M-132.1,459.9v-15.8v-7.9c0-0.9-0.3-2.9,0.9-3.6c1.4-0.8,3.2,0.1,3.2,1.5v23.7c0,0.9,0.3,2.9-0.9,3.6C-130.2,462.3-132.1,461.4-132.1,459.9L-132.1,459.9z" fill="WHITE" rotate="180.0" scaleX="0.6" scaleY="0.6" />
+                    </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+                </Button>
+            </ToolBar>
+        </AnchorPane>
+      <ImageView fx:id="musicPic" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#openMusicDetailPane" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ImageView>
+        <effect>
+            <DropShadow height="30.0" radius="14.5" width="30.0">
+                <color>
+                    <Color opacity="0.30000001192092896" />
+                </color>
+            </DropShadow>
+        </effect>
+    </ToolBar>
+</AnchorPane>

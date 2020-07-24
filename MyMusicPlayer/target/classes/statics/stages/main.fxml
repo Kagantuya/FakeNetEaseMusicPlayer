@@ -1,0 +1,1031 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: rgba(255, 255, 255, 0);"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="top.lucency.controller.MainController">
+    <Pane fx:id="shadowPane" layoutX="10.0" layoutY="10.0" prefHeight="480.0" prefWidth="780.0"
+          style="-fx-background-color: white;">
+        <effect>
+            <DropShadow height="30.0" radius="14.5" width="30.0">
+                <color>
+                    <Color opacity="0.30000001192092896"/>
+                </color>
+            </DropShadow>
+        </effect>
+        <HBox fx:id="musicInfoPane" layoutY="360.0" onMouseClicked="#openMusicDetailPane" onMouseEntered="#mouseEntered"
+              onMouseExited="#mouseExited" prefHeight="60.0" prefWidth="180.0"
+              style="-fx-background-color: #F7F7F7; -fx-border-width: 1 1 0 0; -fx-border-style: solid; -fx-border-color: #DCDCDC;">
+            <AnchorPane prefHeight="50.0" prefWidth="50.0">
+                <ImageView fx:id="musicPic" fitHeight="50.0" fitWidth="50.0" layoutX="5.0" layoutY="5.0"
+                           pickOnBounds="true" preserveRatio="true"/>
+                <Button fx:id="musicInfo" layoutX="5.0" layoutY="5.0" mnemonicParsing="false"
+                        onMouseClicked="#openMusicDetailPane" opacity="0.0" prefHeight="50.0" prefWidth="50.0"
+                        style="-fx-background-color: rgba(0, 0, 0, 0.3);">
+                    <graphic>
+                        <SVGPath
+                                content="M-45.3,472l5.2-5.2c0.1-0.1,0.2-0.1,0.3,0l1,1c0.1,0.1,0.1,0.2,0,0.3l-5.2,5.2h3.8c0.2,0,0.4,0.2,0.4,0.4v1.2c0,0.1-0.1,0.2-0.2,0.2h-6.3c-0.4,0-0.8-0.4-0.8-0.8V468c0-0.1,0.1-0.2,0.2-0.2h1.2c0.2,0,0.4,0.2,0.4,0.4V472z M-28.7,458l-5.2,5.2c-0.1,0.1-0.2,0.1-0.3,0c0,0,0,0,0,0l-1-1c-0.1-0.1-0.1-0.2,0-0.3c0,0,0,0,0,0l5.2-5.2h-3.8c-0.2,0-0.4-0.2-0.4-0.4v-1.2c0-0.1,0.1-0.2,0.2-0.2h6.3c0.4,0,0.8,0.4,0.8,0.8v6.3c0,0.1-0.1,0.2-0.2,0.2h-1.2c-0.2,0-0.4-0.2-0.4-0.4C-28.7,461.8-28.7,458-28.7,458z"
+                                fill="#eaeaea" scaleX="1.6" scaleY="1.6"/>
+                    </graphic>
+                </Button>
+            </AnchorPane>
+            <VBox prefHeight="30.0" prefWidth="150.0">
+                <HBox.margin>
+                    <Insets left="10.0"/>
+                </HBox.margin>
+                <Label fx:id="name" prefWidth="100.0" textFill="#414141">
+                    <font>
+                        <Font name="KaiTi" size="13.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets top="15.0"/>
+                    </VBox.margin>
+                </Label>
+                <Label fx:id="author" prefWidth="100.0" textFill="#414141">
+                    <font>
+                        <Font name="KaiTi" size="15.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="-1.0" top="3.0"/>
+                    </VBox.margin>
+                </Label>
+            </VBox>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </HBox>
+        <ScrollPane id="list" layoutY="60.0" maxWidth="180.0" prefHeight="300.0" prefWidth="180.0"
+                    style="-fx-background-color: rgba(255, 255, 255, 0);" stylesheets="@../javafxcss/ScrollPane.css">
+            <AnchorPane fx:id="listPane" maxWidth="180.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0"
+                        prefWidth="180.0" style="-fx-background-color: #F7F7F7;">
+                <VBox fx:id="list" prefHeight="300.0" prefWidth="180.0" style="-fx-background-color: #F7F7F7;">
+                    <Label text="推荐" textFill="#707070">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="10.0" top="15.0"/>
+                        </VBox.margin>
+                        <font>
+                            <Font name="KaiTi" size="14.0"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="findMusicLabel" onMouseClicked="#openFindMusicRootPane" prefWidth="180.0"
+                           style="-fx-border-color: #00BFFF; -fx-border-width: 0 0 0 3; -fx-background-color: #eff0f1;"
+                           text="发现音乐" textFill="#707070">
+                        <VBox.margin>
+                            <Insets bottom="5.0" top="5.0"/>
+                        </VBox.margin>
+                        <font>
+                            <Font name="KaiTi" size="14.0"/>
+                        </font>
+                        <graphic>
+                            <Button mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);">
+                                <graphic>
+                                    <SVGPath
+                                            content="M-47.6,459.4c0.3-0.2,0.7-0.2,1-0.3v-4.5h5.4v5.1h0c0,0.4-0.5,1-1.2,1.3c-0.9,0.4-1.7,0.3-2-0.1c-0.2-0.5,0.3-1.2,1.2-1.6c0.3-0.2,0.7-0.2,1-0.3v-2.7h-3.3v3.3c0,0.5-0.5,1-1.2,1.4c-0.9,0.4-1.7,0.3-2-0.1C-49,460.4-48.4,459.8-47.6,459.4z M-42.4,463.5c-1.9,0.9-3.1,2.4-2.6,3.4c0.5,1,2.4,1.2,4.3,0.3c1.8-0.8,2.9-2.2,2.7-3.2v-5.6c2,0.2,3.2,0.5,2.3,2.9l0.6,0.5c1.5-1.5,1.9-2.7,0.8-4.6c-1-1.5-2.7-3-3.6-4.6h-1.9v10.3C-40.6,462.9-41.5,463.1-42.4,463.5L-42.4,463.5z"
+                                            fill="#707070"/>
+                                </graphic>
+                            </Button>
+                        </graphic>
+                        <padding>
+                            <Insets left="15.0"/>
+                        </padding>
+                        <cursor>
+                            <Cursor fx:constant="HAND"/>
+                        </cursor>
+                    </Label>
+                    <Label text="我的音乐" textFill="#707070">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="10.0" top="5.0"/>
+                        </VBox.margin>
+                        <font>
+                            <Font name="KaiTi" size="14.0"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="localMusicLabel" onMouseClicked="#openLocalMusicRootPane" prefWidth="180.0"
+                           style="-fx-border-width: 0 0 0 3; -fx-border-color: rgba(0, 0, 0, 0);" text="本地音乐"
+                           textFill="#707070">
+                        <VBox.margin>
+                            <Insets bottom="5.0" top="5.0"/>
+                        </VBox.margin>
+                        <font>
+                            <Font name="KaiTi" size="14.0"/>
+                        </font>
+                        <graphic>
+                            <Button mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);">
+                                <graphic>
+                                    <SVGPath
+                                            content="M-16,493.6c-1.3,0-2.5-0.3-3.6-0.9c-0.5-0.3-1-0.6-1.5-1c-0.6-0.6-1.2-1.2-1.6-2c-0.4-0.8-0.7-1.6-0.9-2.4c-0.1-0.5-0.1-1-0.1-1.5c0-1,0.3-2,0.7-2.9c0.3-0.6,0.6-1.2,1.1-1.7c0.6-0.8,1.4-1.4,2.3-1.8c0.6-0.3,1.3-0.6,2-0.7c0.4-0.1,0.8-0.1,1.2-0.1c0.4,0,0.8,0,1.2,0c0.3,0,0.4,0.2,0.5,0.4c0.1,0.3-0.2,0.6-0.5,0.6c-0.3,0-0.6,0-0.9,0c-0.8,0-1.6,0.2-2.3,0.5c-0.7,0.3-1.3,0.6-1.8,1.1c-1.1,0.9-1.8,2.1-2.1,3.5c-0.1,0.4-0.1,0.7-0.2,1.1c0,0.3,0,0.6,0,0.9c0.1,0.8,0.3,1.5,0.6,2.3c0.3,0.5,0.6,1,1,1.5c0.5,0.6,1.1,1.1,1.8,1.4c0.6,0.3,1.3,0.6,1.9,0.7c0.4,0.1,0.7,0.1,1.1,0.1c0.8,0,1.6-0.1,2.3-0.3c0.8-0.3,1.5-0.7,2.2-1.2c0.7-0.6,1.3-1.3,1.7-2.2c0.3-0.6,0.5-1.3,0.6-2c0-0.3,0.1-0.6,0.1-1c0-0.7-0.1-1.3-0.3-2c-0.1-0.3,0.1-0.6,0.4-0.7c0.2-0.1,0.5,0.1,0.6,0.3c0.1,0.4,0.2,0.8,0.3,1.3c0.1,0.5,0.1,0.9,0.1,1.4c0,1-0.2,1.9-0.6,2.7c-0.3,0.6-0.6,1.2-1,1.7c-0.6,0.7-1.3,1.3-2.1,1.8c-0.6,0.4-1.3,0.6-2,0.8c-0.4,0.1-0.8,0.2-1.2,0.2C-15.6,493.6-15.8,493.6-16,493.6zM-18.8,486.7c0-0.7,0.2-1.2,0.6-1.8c0.4-0.5,0.9-1,1.5-1.3c0.3-0.2,0.7-0.3,1.1-0.3c0.5,0,1,0.1,1.4,0.3c0,0,0,0,0.1,0c0-0.4,0-0.8,0.1-1.1c0-0.4,0-0.7,0.1-1.1l0.1-1.3c0-0.2,0-0.4,0-0.6c0-0.3,0.4-0.5,0.7-0.4c0.7,0.3,1.3,0.6,1.9,1.1c0.3,0.2,0.5,0.4,0.7,0.6c0.3,0.3,0.6,0.7,0.9,1.1c0.2,0.3,0,0.7-0.3,0.8c-0.2,0-0.4-0.1-0.5-0.2c-0.2-0.4-0.5-0.7-0.8-1c-0.4-0.4-0.9-0.8-1.5-1.1c-0.1,0-0.1,0-0.1,0c0,0.2,0,0.4,0,0.6c0,0.3,0,0.6-0.1,0.9c0,0.2,0,0.4,0,0.6c0,0.3,0,0.6-0.1,0.9c0,0.2,0,0.4,0,0.6l-0.1,1.1c0,0.1,0,0.3,0,0.4c0,0.6-0.2,1.1-0.5,1.6c-0.4,0.6-0.9,1-1.5,1.3c-0.4,0.2-0.7,0.3-1.1,0.3c-0.4,0-0.8,0-1.2-0.2c-0.6-0.3-0.9-0.7-1.1-1.3C-18.7,487.1-18.8,486.9-18.8,486.7L-18.8,486.7z M-15.4,484.3c-0.4,0-0.7,0.1-1,0.3c-0.5,0.3-0.9,0.6-1.1,1.1c-0.2,0.4-0.3,0.8-0.3,1.2c0,0.3,0.2,0.5,0.4,0.7c0.2,0.2,0.5,0.2,0.7,0.2c0.3,0,0.6-0.1,0.9-0.2c0.5-0.3,0.9-0.6,1.2-1.1c0.2-0.4,0.3-0.8,0.3-1.2c0-0.3-0.2-0.5-0.4-0.7C-14.9,484.4-15.2,484.3-15.4,484.3z M-16.1,480.1c0.1,0,0.3,0,0.4,0.1c0.2,0.1,0.3,0.3,0.2,0.5c-0.1,0.2-0.2,0.3-0.4,0.4c-0.1,0-0.3,0-0.4,0c-0.5,0-1.1,0.2-1.6,0.4c-0.5,0.2-1,0.5-1.4,0.9c-0.2,0.2-0.4,0.4-0.6,0.6c-0.2,0.2-0.4,0.3-0.6,0.2c-0.3-0.1-0.4-0.5-0.2-0.7c0.1-0.1,0.2-0.3,0.3-0.4c0.5-0.5,1.1-0.9,1.7-1.3c0.6-0.3,1.2-0.5,1.8-0.6C-16.6,480.1-16.3,480.1-16.1,480.1z M-16,492.1c-0.1,0-0.2,0-0.2,0c-0.2,0-0.4-0.3-0.4-0.5s0.2-0.4,0.5-0.5c0.5,0,1-0.1,1.5-0.2c0.6-0.2,1.1-0.5,1.6-0.9c0.3-0.2,0.5-0.5,0.7-0.7c0.2-0.2,0.4-0.3,0.7-0.1c0.3,0.2,0.3,0.5,0.1,0.7c-0.4,0.5-0.9,1-1.5,1.3c-0.7,0.4-1.4,0.7-2.1,0.8C-15.4,492-15.7,492.1-16,492.1L-16,492.1z"/>
+                                </graphic>
+                            </Button>
+                        </graphic>
+                        <padding>
+                            <Insets left="15.0"/>
+                        </padding>
+                        <cursor>
+                            <Cursor fx:constant="HAND"/>
+                        </cursor>
+                    </Label>
+                </VBox>
+            </AnchorPane>
+        </ScrollPane>
+        <AnchorPane fx:id="localMusicRootPane" layoutX="180.0" layoutY="60.0" prefHeight="360.0" prefWidth="600.0"
+                    scaleX="0.0" scaleY="0.0" stylesheets="@../javafxcss/TableView.css">
+            <TableView fx:id="localMusicInfo" layoutY="50.0" prefHeight="310.0" prefWidth="600.0"
+                       style="-fx-background-color: rgba(0, 0, 0, 0);">
+                <columns>
+                    <TableColumn fx:id="localId" minWidth="-1.0" prefWidth="0.0" style="-fx-label-padding: 0 0 0 20;"/>
+                    <TableColumn fx:id="loaclName" prefWidth="0.0" style="-fx-font-family: KaiTi;" text="音乐标题"/>
+                    <TableColumn fx:id="localAuthor" prefWidth="0.0" style="-fx-font-family: KaiTi;" text="歌手"/>
+                    <TableColumn fx:id="localAlbum" prefWidth="75.0" style="-fx-font-family: KaiTi;" text="专辑"/>
+                    <TableColumn fx:id="localTime" prefWidth="0.0" style="-fx-font-family: KaiTi;" text="时长"/>
+                    <TableColumn fx:id="loaclSize" prefWidth="0.0" style="-fx-font-family: KaiTi;" text="大小"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFFAFA;">
+                <Label layoutX="14.0" layoutY="11.0" text="本地音乐">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="localMusicNumber" layoutX="110.0" layoutY="20.0" textFill="#696969">
+                    <font>
+                        <Font name="KaiTi" size="17.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="updateLocalMusic" layoutX="492.0" layoutY="11.0" mnemonicParsing="false"
+                        onAction="#updateLocalMusic"
+                        style="-fx-background-color: white; -fx-border-color: #DCDCDC; -fx-border-radius: 5;"
+                        text="更新音乐" textFill="DIMGRAY">
+                    <font>
+                        <Font name="KaiTi" size="15.0"/>
+                    </font>
+                    <graphic>
+                        <SVGPath
+                                content="M-29.8,473.7c-2,0.4-4.1-0.2-5.7-1.7c-2.3-2.3-2.4-5.8-0.5-8.2v1.1c0,0.3,0.3,0.6,0.6,0.6s0.6-0.3,0.6-0.6v-2.5c0-0.2-0.1-0.3-0.2-0.4c-0.1-0.1-0.3-0.2-0.4-0.2h-2.5c-0.3,0-0.6,0.3-0.6,0.6c0,0.3,0.3,0.6,0.6,0.6h0.9c-2.3,2.9-2.1,7.1,0.6,9.8c1.9,1.9,4.4,2.5,6.8,2c0.1,0,0.2-0.1,0.3-0.2c0.2-0.2,0.3-0.6,0-0.8c0,0,0,0,0,0C-29.4,473.7-29.6,473.6-29.8,473.7z M-24.3,472.2h-0.8c2.3-2.9,2.1-7.1-0.6-9.8c-1.7-1.7-4.1-2.4-6.4-2.1c-0.2,0-0.3,0.1-0.4,0.2c-0.2,0.2-0.2,0.6,0,0.8c0,0,0,0,0,0c0.2,0.2,0.4,0.2,0.6,0.2c1.9-0.3,3.9,0.3,5.3,1.7c2.3,2.3,2.4,5.8,0.5,8.2v-1.1c0-0.3-0.3-0.6-0.6-0.6c-0.3,0-0.6,0.3-0.6,0.6v2.5c0,0.2,0.1,0.3,0.2,0.4c0.1,0.1,0.3,0.2,0.4,0.2h2.5c0.3,0,0.6-0.3,0.6-0.6S-24,472.2-24.3,472.2z"
+                                fill="DEEPSKYBLUE"/>
+                    </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
+            </AnchorPane>
+        </AnchorPane>
+        <AnchorPane fx:id="findMusicRootPane" layoutX="180.0" layoutY="60.0" prefHeight="360.0" prefWidth="600.0">
+            <ScrollPane prefHeight="360.0" prefWidth="600.0" stylesheets="@../javafxcss/FindScrollPane.css">
+                <AnchorPane fx:id="playListsRootPane" minHeight="0.0" minWidth="0.0" prefHeight="360.0"
+                            prefWidth="600.0">
+                    <VBox fx:id="playListsBox" prefHeight="360.0" prefWidth="590.0" spacing="30.0">
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                        </padding>
+                        <opaqueInsets>
+                            <Insets/>
+                        </opaqueInsets>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                            <Label fx:id="currentCat" onMouseClicked="#toggleCatsPane"
+                                   style="-fx-background-color: white; -fx-border-color: #DCDCDC; -fx-border-radius: 5;"
+                                   text="全部歌单" textFill="#707070">
+                                <font>
+                                    <Font name="KaiTi" size="14.0"/>
+                                </font>
+                                <padding>
+                                    <Insets bottom="3.0" left="20.0" right="20.0" top="3.0"/>
+                                </padding>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </Label>
+                            <Label fx:id="updatePlayList" onMouseClicked="#updatePlayList"
+                                   style="-fx-background-color: white; -fx-border-color: #DCDCDC; -fx-border-radius: 5;"
+                                   text="更新歌单" textFill="#707070">
+                                <font>
+                                    <Font name="KaiTi" size="14.0"/>
+                                </font>
+                                <padding>
+                                    <Insets bottom="3.0" left="20.0" right="20.0" top="3.0"/>
+                                </padding>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </Label>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Label contentDisplay="CENTER" minHeight="30.0" prefWidth="125.0" textFill="#707070"
+                                       wrapText="true">
+                                    <font>
+                                        <Font name="KaiTi" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <cursor>
+                                    <Cursor fx:constant="HAND"/>
+                                </cursor>
+                            </VBox>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                    </VBox>
+                    <AnchorPane fx:id="catsRootPane" layoutX="10.0" layoutY="36.0" prefHeight="260.0" prefWidth="0.0"
+                                scaleX="0.0" scaleY="0.0">
+                        <VBox layoutY="10.0" prefHeight="250.0" prefWidth="400.0"
+                              style="-fx-border-radius: 5; -fx-border-width: 1 1 1 1; -fx-border-color: #DCDCDC; -fx-background-color: white; -fx-background-radius: 5;">
+                            <effect>
+                                <DropShadow height="30.0" radius="14.5" width="30.0">
+                                    <color>
+                                        <Color opacity="0.30000001192092896"/>
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                            <Label prefWidth="400.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: #DCDCDC;"
+                                   text="添加标签" textFill="#707070">
+                                <font>
+                                    <Font name="KaiTi" size="14.0"/>
+                                </font>
+                                <padding>
+                                    <Insets bottom="10.0" left="25.0" right="10.0" top="10.0"/>
+                                </padding>
+                                <VBox.margin>
+                                    <Insets/>
+                                </VBox.margin>
+                            </Label>
+                            <ScrollPane prefHeight="250.0" prefWidth="400.0"
+                                        style="-fx-background-color: rgba(0, 0, 0, 0);"
+                                        stylesheets="@../javafxcss/FindScrollPane.css">
+                                <AnchorPane fx:id="catsOptionsPane" minHeight="0.0" minWidth="0.0" prefHeight="200.0"
+                                            prefWidth="400.0" style="-fx-background-color: white;">
+                                    <VBox fx:id="catsBox" prefHeight="0.0" prefWidth="390.0">
+                                        <padding>
+                                            <Insets left="10.0" right="10.0"/>
+                                        </padding>
+                                        <Label fx:id="allCats" alignment="CENTER" prefWidth="390.0"
+                                               style="-fx-border-color: #F7F7F7;" text="全部歌单" textFill="#707070">
+                                            <font>
+                                                <Font name="KaiTi" size="14.0"/>
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" top="5.0"/>
+                                            </VBox.margin>
+                                            <padding>
+                                                <Insets bottom="5.0" top="5.0"/>
+                                            </padding>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND"/>
+                                            </cursor>
+                                        </Label>
+                                    </VBox>
+                                </AnchorPane>
+                            </ScrollPane>
+                        </VBox>
+                        <Label layoutX="40.0" prefHeight="20.0" prefWidth="20.0" rotate="45.0"
+                               style="-fx-background-color: white; -fx-border-color: #DCDCDC; -fx-border-width: 1 0 0 1;"/>
+                    </AnchorPane>
+                </AnchorPane>
+            </ScrollPane>
+        </AnchorPane>
+        <AnchorPane fx:id="playListsDetailsRootPane" layoutX="180.0" layoutY="60.0" prefHeight="360.0" prefWidth="600.0"
+                    scaleX="0.0" scaleY="0.0">
+            <ImageView fx:id="playListImage" fitHeight="150.0" fitWidth="150.0" layoutX="30.0" layoutY="30.0"
+                       pickOnBounds="true" preserveRatio="true"/>
+            <Label fx:id="playListTitle" layoutX="250.0" layoutY="30.0" prefWidth="300.0">
+                <font>
+                    <Font name="KaiTi" size="26.0"/>
+                </font>
+            </Label>
+            <Label fx:id="playListInfo" layoutX="255.0" layoutY="75.0" prefHeight="100.0" prefWidth="270.0"
+                   textFill="#707070" wrapText="true">
+                <font>
+                    <Font name="KaiTi" size="14.0"/>
+                </font>
+            </Label>
+            <TableView fx:id="netEaseSongs" layoutY="210.0" prefHeight="150.0" prefWidth="600.0"
+                       style="-fx-background-color: white;" stylesheets="@../javafxcss/TableView.css">
+                <columns>
+                    <TableColumn fx:id="netEaseId" prefWidth="75.0"/>
+                    <TableColumn fx:id="netEaseTitle" prefWidth="75.0" style="-fx-font-family: KaiTI;" text="音乐标题"/>
+                    <TableColumn fx:id="netEaseAuthor" prefWidth="75.0" style="-fx-font-family: KaiTI;" text="歌手"/>
+                    <TableColumn fx:id="netEaseAlbum" prefWidth="75.0" style="-fx-font-family: KaiTI;" text="专辑"/>
+                    <TableColumn fx:id="netEaseTime" prefWidth="75.0" style="-fx-font-family: KaiTI;" text="时长"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+            <Button layoutX="200.0" layoutY="30.0" mnemonicParsing="false"
+                    style="-fx-background-color: rgba(0, 0, 0, 0);">
+                <graphic>
+                    <SVGPath
+                            content="M65.1,488.8c0-0.5,0.2-0.9,0.5-1.2l9.8-9.4c0.3-0.3,0.8-0.6,1.4-0.9c0.6-0.2,1.1-0.4,1.6-0.4h5.7c0.5,0,0.9,0.2,1.2,0.5c0.3,0.3,0.5,0.7,0.5,1.2v5.5c0,0.5-0.1,1-0.4,1.5c-0.3,0.6-0.5,1-0.9,1.3l-9.8,9.4c-0.3,0.3-0.8,0.5-1.2,0.5c-0.5,0-0.9-0.2-1.3-0.5l-6.7-6.5C65.3,489.7,65.1,489.3,65.1,488.8 M80.3,482.4c0.3,0.3,0.8,0.5,1.2,0.5s0.9-0.2,1.2-0.5c0.3-0.3,0.5-0.7,0.5-1.2c0-0.5-0.2-0.9-0.5-1.2c-0.3-0.3-0.8-0.5-1.2-0.5s-0.9,0.2-1.2,0.5s-0.5,0.7-0.5,1.2C79.7,481.7,79.9,482.1,80.3,482.4 M60.3,487.6l9.8-9.4c0.3-0.3,0.8-0.6,1.4-0.9c0.6-0.2,1.1-0.4,1.6-0.4h3.1c-0.5,0-1,0.1-1.6,0.4c-0.6,0.2-1.1,0.5-1.4,0.9l-9.8,9.4c-0.3,0.4-0.5,0.7-0.5,1.2c0,0.5,0.2,0.9,0.5,1.2l6.4,6.2c-0.2,0.2-0.5,0.4-0.7,0.6c-0.2,0.1-0.5,0.2-0.8,0.2c-0.5,0-0.9-0.2-1.3-0.5l-6.7-6.5c-0.3-0.3-0.5-0.7-0.5-1.2C59.8,488.4,60,488,60.3,487.6"/>
+                </graphic>
+            </Button>
+        </AnchorPane>
+        <AnchorPane fx:id="musicDetailPane" layoutY="60.0" opacity="0.9" prefHeight="360.0" prefWidth="780.0"
+                    scaleX="0.0" scaleY="0.0" style="-fx-background-color: #F7F7F7;">
+            <AnchorPane layoutX="60.0" layoutY="20.0" prefHeight="0.0" prefWidth="0.0">
+                <Circle fill="#dfdfdf" layoutX="160.0" layoutY="160.0" radius="160.0" stroke="#dfdfdf"
+                        strokeType="INSIDE"/>
+                <Circle layoutX="160.0" layoutY="160.0" radius="150.0" stroke="BLACK" strokeType="INSIDE"/>
+                <Circle fill="#b2b2b2" layoutX="160.0" layoutY="160.0" radius="105.0" stroke="BLACK"
+                        strokeType="INSIDE"/>
+                <ImageView fx:id="musicBigPic" fitHeight="200.0" fitWidth="200.0" layoutX="60.0" layoutY="60.0"
+                           pickOnBounds="true" preserveRatio="true">
+                    <clip>
+                        <Circle centerX="100" centerY="100" fill="aqua">
+                            <radius>100</radius>
+                        </Circle>
+                    </clip>
+                </ImageView>
+            </AnchorPane>
+            <AnchorPane fx:id="needle" layoutX="225.0" layoutY="20.0" prefHeight="0.0" prefWidth="180.0" rotate="15.0">
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="8.0" layoutY="5.0" stroke="#f8f8f8"
+                           strokeType="INSIDE" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="147.0">
+                    <effect>
+                        <DropShadow height="30.0" radius="14.5" width="30.0">
+                            <color>
+                                <Color opacity="0.30000001192092896"/>
+                            </color>
+                        </DropShadow>
+                    </effect>
+                </Rectangle>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#646464" height="3.0" layoutX="136.0" layoutY="8.0"
+                           stroke="#646464" strokeType="INSIDE" width="10.0"/>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="12.0" layoutX="144.0" layoutY="3.0"
+                           stroke="#f8f8f8" strokeType="INSIDE" style="-fx-arc-width: 10; -fx-arc-height: 10;"
+                           width="35.0">
+                    <effect>
+                        <DropShadow height="30.0" radius="14.5" width="30.0">
+                            <color>
+                                <Color opacity="0.30000001192092896"/>
+                            </color>
+                        </DropShadow>
+                    </effect>
+                </Rectangle>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="18.0" layoutX="172.0" stroke="#f8f8f8"
+                           strokeType="INSIDE" width="20.0">
+                    <effect>
+                        <DropShadow height="30.0" radius="14.5" width="30.0">
+                            <color>
+                                <Color opacity="0.30000001192092896"/>
+                            </color>
+                        </DropShadow>
+                    </effect>
+                </Rectangle>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d7d7" height="3.0" layoutX="174.0" layoutY="3.0"
+                           stroke="#d7d7d7" strokeType="INSIDE" width="15.0"/>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d7d7" height="3.0" layoutX="174.0" layoutY="12.0"
+                           stroke="#d7d7d7" strokeType="INSIDE" width="15.0"/>
+            </AnchorPane>
+            <Circle fill="WHITE" layoutX="220.0" radius="10.0" stroke="WHITE" strokeType="INSIDE">
+                <effect>
+                    <DropShadow height="30.0" radius="14.5" width="30.0">
+                        <color>
+                            <Color opacity="0.30000001192092896"/>
+                        </color>
+                    </DropShadow>
+                </effect>
+            </Circle>
+            <Circle fill="#e5e5e5" layoutX="220.0" radius="5.0" stroke="#e5e5e5" strokeType="INSIDE"/>
+            <AnchorPane layoutX="452.0" layoutY="30.0" prefHeight="300.0" prefWidth="240.0">
+                <Label fx:id="nameBig" prefWidth="230.0">
+                    <font>
+                        <Font name="KaiTi" size="26.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="authorBig" layoutY="38.0" prefHeight="0.0" prefWidth="230.0" textFill="#6f6f6f">
+                    <font>
+                        <Font name="KaiTi" size="17.0"/>
+                    </font>
+                    <padding>
+                        <Insets left="2.0"/>
+                    </padding>
+                </Label>
+                <ScrollPane id="musicDetailPane" fx:id="lyricScrollPane" layoutY="70.0" prefHeight="240.0"
+                            prefWidth="300.0" stylesheets="@../javafxcss/ScrollPane.css">
+                    <AnchorPane fx:id="lyricPane" minHeight="0.0" minWidth="0.0" prefHeight="240.0" prefWidth="300.0">
+                        <VBox fx:id="lyric" maxHeight="250.0" maxWidth="300.0" prefHeight="240.0" prefWidth="300.0"/>
+                    </AnchorPane>
+                </ScrollPane>
+            </AnchorPane>
+            <Button fx:id="closeLyric" layoutX="720.0" layoutY="20.0" mnemonicParsing="false"
+                    onAction="#closeMusicDetailPane" prefHeight="30.0" prefWidth="30.0"
+                    style="-fx-background-color: #FFFAFA; -fx-border-width: 1 1 1 1; -fx-border-style: solid; -fx-border-color: #DCDCDC;">
+                <graphic>
+                    <SVGPath
+                            content="M156.5,479.2c-0.2,0-0.4,0.1-0.5,0.3l0,0l0,0c-0.2,0.1-0.3,0.3-0.3,0.5l0,5l0,0.3l0-0.2v0.6c0,0.2,0.1,0.4,0.2,0.6c0.1,0.1,0.3,0.2,0.5,0.2c0.3,0,0.6-0.2,0.7-0.5l0-4.3l6.7,6.5c0.3,0.3,0.8,0.3,1.1,0c0.3-0.3,0.3-0.8,0-1.1l-6.7-6.5l4.4,0c0.4,0,0.7-0.4,0.7-0.7c0-0.2-0.1-0.4-0.2-0.5c-0.1-0.1-0.3-0.2-0.5-0.2L156.5,479.2L156.5,479.2z M150.6,475.9l0-6c0-0.2-0.1-0.4-0.2-0.5c-0.1-0.1-0.3-0.2-0.5-0.2c-0.4,0-0.7,0.3-0.7,0.7l0,4.4l-6.6-6.6c-0.3-0.3-0.8-0.3-1.1,0c-0.3,0.3-0.3,0.8,0,1.1l6.6,6.6l-4.4,0c-0.3,0.1-0.5,0.4-0.5,0.7c0,0.2,0.1,0.4,0.2,0.5c0.2,0.2,0.4,0.2,0.6,0.2h0.7l-0.2,0l0.3,0l5,0c0.2,0,0.4-0.1,0.5-0.3l0,0l0,0C150.5,476.3,150.6,476.1,150.6,475.9L150.6,475.9z"
+                            rotate="90.0" scaleX="0.8" scaleY="0.8"/>
+                </graphic>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+        </AnchorPane>
+        <ToolBar fx:id="toolbar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="60.0" prefWidth="780.0"
+                 style="-fx-background-color: #00BFFF;">
+            <Button fx:id="quit" mnemonicParsing="false" onAction="#quit" prefHeight="30.0" prefWidth="30.0"
+                    style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <graphic>
+                    <SVGPath
+                            content="M-42.5,476.9l17.5-17.5l1.5,1.5l-17.5,17.5L-42.5,476.9L-42.5,476.9z M-25.1,478.4l-17.5-17.5l1.5-1.5 l17.5,17.5L-25.1,478.4L-25.1,478.4z"
+                            fill="PALETURQUOISE" scaleX="0.8" scaleY="0.8"/>
+                </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#min" style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <graphic>
+                    <SVGPath content="M-51.7,395.4H-30v1.8h-21.7V395.4z" fill="PALETURQUOISE" scaleX="0.8"
+                             scaleY="0.8"/>
+                </graphic>
+            </Button>
+            <Button fx:id="small" mnemonicParsing="false" onAction="#small"
+                    style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <graphic>
+                    <SVGPath
+                            content="M-0.5,491.2h-1.4v4.3c-0.1,0.9-0.8,1.6-1.7,1.5h-12.1c-0.9,0-1.7-0.7-1.7-1.6v-9.3c0-0.9,0.8-1.6,1.7-1.6 h1.4v-4.2c0-0.9,0.8-1.6,1.7-1.6h12.1c0.9,0,1.7,0.7,1.7,1.6v9.3C1.2,490.5,0.4,491.2-0.5,491.2z M-16.2,487.3v8.5H-3v-8.5H-16.2z M-0.1,481.6h-12.8v3h9.3c0.9,0,1.7,0.7,1.7,1.6v3.7h1.8V481.6z"
+                            fill="PALETURQUOISE" scaleX="0.8" scaleY="0.8"/>
+                </graphic>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+            <AnchorPane prefHeight="28.8" prefWidth="48.8">
+                <Button mnemonicParsing="false" style="-fx-background-color: rgba(255, 255, 255, 0);"
+                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                        AnchorPane.topAnchor="0.0">
+                    <graphic>
+                        <SVGPath
+                                content="M-18.5,455.9l-4.5-4.5c-0.3-0.3-0.8-0.5-1.3-0.5c0,0-0.1,0-0.1,0h-2.4l-0.2,0.1c-0.9,0.5-2,0.8-3.2,0.8c-1.2,0-2.3-0.3-3.2-0.8l-0.2-0.1h-2.4c-0.6,0-1.2,0.3-1.4,0.9l-4.4,4.4c-0.3,0.3-0.5,0.7-0.5,1.1c0,0.4,0.2,0.8,0.5,1.1l3.2,3.2c0.3,0.3,0.6,0.4,1,0.5v7.8c0,0.9,0.7,1.6,1.6,1.6h11.5c0.9,0,1.6-0.7,1.6-1.6v-8.2c0.4,0,0.7-0.2,1-0.5l3.2-3.2C-17.8,457.5-17.8,456.5-18.5,455.9L-18.5,455.9z M-19.5,457.1l-3.2,3.2c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0l-1.2-1.2V470c0,0.1-0.1,0.2-0.2,0.2h-11.5c-0.1,0-0.2-0.1-0.2-0.2c0,0,0,0,0,0v-10.5l-1.2,1.1c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0l-3.2-3.2c0,0,0-0.1,0-0.1c0,0,0-0.1,0-0.1l4.5-4.5l0.1-0.1l0.1-0.2c0-0.1,0.1-0.1,0.1-0.1h2c1.1,0.6,2.4,0.9,3.7,0.9c1.4,0,2.6-0.3,3.7-0.9h2c0,0,0,0,0,0l0.1,0l0.1,0c0,0,0.1,0,0.1,0l4.5,4.5C-19.5,457-19.5,457.1-19.5,457.1L-19.5,457.1z"
+                                fill="PALETURQUOISE" scaleX="0.8" scaleY="0.8"/>
+                    </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
+                <ColorPicker fx:id="skin" cache="true" maxHeight="30.0" maxWidth="40.8" nodeOrientation="LEFT_TO_RIGHT"
+                             onAction="#changeSkin" opacity="0.0" style="-fx-background-color: rgba(255, 255, 255, 0);"
+                             AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                             AnchorPane.topAnchor="0.0">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </ColorPicker>
+            </AnchorPane>
+            <Button fx:id="frequencySpectrum" mnemonicParsing="false" onAction="#toggleFrequencySpectrumStage"
+                    style="-fx-background-color: rgba(0, 0, 0, 0);">
+                <graphic>
+                    <SVGPath
+                            content="M-13.9,466v15.8h4V466H-13.9z M-18.6,481.8h4v-11.9h-4V481.8z M-24.9,481.8h4v-7.1h-4V481.8z M-29.7,481.8h4 v-11.9h-4V481.8L-29.7,481.8z"
+                            fill="PALETURQUOISE"/>
+                </graphic>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+            <Label fx:id="title" text="箱子的音乐盒" textFill="WHITE">
+                <padding>
+                    <Insets left="370.0"/>
+                </padding>
+                <font>
+                    <Font name="KaiTi" size="20.0"/>
+                </font>
+            </Label>
+            <Button fx:id="logo" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0"
+                    style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <graphic>
+                    <SVGPath
+                            content="M-45.2,467.3c-0.2,0-0.4,0.2-0.4,0.4v11.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4v-11.1 C-44.7,467.5-44.9,467.3-45.2,467.3z M-42.8,467.3c-0.2,0-0.4,0.2-0.4,0.4v11.1c0,0.2,0.2,0.4,0.4,0.4c0.2,0,0.4-0.2,0.4-0.4v-11.1 C-42.3,467.5-42.5,467.3-42.8,467.3z M-40.4,467.3c-0.2,0-0.4,0.2-0.4,0.4v11.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4v-11.1 C-40,467.5-40.2,467.3-40.4,467.3z M-38.6,478.2h-8.3c-0.5,0-0.9,0.4-0.9,0.9s0.4,0.9,0.9,0.9h8.3c0.5,0,0.9-0.4,0.9-0.9 S-38.1,478.2-38.6,478.2z M-46.6,462.1h3v5.1h-4c-0.5,0-0.9,0.4-0.9,0.9s0.4,0.9,0.9,0.9h9.8c0.5,0,0.9-0.4,0.9-0.9 s-0.4-0.9-0.9-0.9h-4v-5.1h3c0.5,0,0.9-0.4,0.9-0.9s-0.4-0.9-0.9-0.9h-3v-0.7h1.8c0.5,0,0.9-0.4,0.9-0.9s-0.4-0.9-0.9-0.9h-5.3 c-0.5,0-0.9,0.4-0.9,0.9s0.4,0.9,0.9,0.9h1.8v0.7h-3c-0.5,0-0.9,0.4-0.9,0.9S-47.1,462.1-46.6,462.1z M-36.6,464c-0.1-0.1-0.1-0.2-0.1-0.3c0-0.2,0.2-0.4,0.4-0.4c0.2,0,0.4,0.2,0.4,0.4c0,0.5,0.4,0.9,0.9,0.9 c0.5,0,0.9-0.4,0.9-0.9c0-1.2-1-2.1-2.1-2.1c-1.2,0-2.1,1-2.1,2.1c0,0.6,0.3,1.2,0.8,1.6c0,0,0.1,0.1,0.1,0.1c0,0,0.1,0,0.1,0.1 c0,0,0,0,0.1,0c2.6,1.8,4.1,4.6,4.1,7.8c0,2.5-1,4.9-2.8,6.6c-1.8,1.8-4.1,2.8-6.6,2.8c-2.5,0-4.9-1-6.6-2.8 c-1.8-1.8-2.8-4.1-2.8-6.6c0-3.1,1.6-6,4.1-7.8c0,0,0.1,0,0.1-0.1c0.5-0.4,0.9-1,0.9-1.7c0-1.2-1-2.1-2.1-2.1s-2.1,1-2.1,2.1 c0,0.5,0.4,0.9,0.9,0.9c0.5,0,0.9-0.4,0.9-0.9c0-0.2,0.2-0.4,0.4-0.4c0.2,0,0.4,0.2,0.4,0.4c0,0.1-0.1,0.2-0.2,0.3l-0.1,0.1 c-3,2.1-4.9,5.5-4.9,9.2c0,1.5,0.3,3,0.9,4.4c0.6,1.3,1.4,2.5,2.4,3.6c1,1,2.2,1.8,3.6,2.4c1.4,0.6,2.8,0.9,4.4,0.9 c1.5,0,3-0.3,4.4-0.9c1.3-0.6,2.5-1.4,3.6-2.4c1-1,1.8-2.2,2.4-3.6c0.6-1.4,0.9-2.8,0.9-4.4C-31.6,469.5-33.4,466.1-36.6,464z"
+                            fill="WHITE" scaleX="1.5" scaleY="1.5"/>
+                </graphic>
+                <cursor>
+                    <Cursor fx:constant="DEFAULT"/>
+                </cursor>
+            </Button>
+        </ToolBar>
+        <ToolBar layoutY="420.0" prefHeight="60.0" prefWidth="780.0"
+                 style="-fx-background-color: #F7F7F7; -fx-border-width: 0.5 0 0 0; -fx-border-color: #B0C4DE;">
+            <Button onAction="#previous" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0"
+                    style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <graphic>
+                    <SVGPath fx:id="previous"
+                             content="M-104.2,399.3l6.8,4.6c0.3,0.2,0.8,0.1,1-0.2c0.1-0.1,0.1-0.3,0.1-0.4v-9.3c0-0.4-0.3-0.7-0.7-0.7 c-0.2,0-0.3,0-0.4,0.1l-6.8,4.6c-0.3,0.2-0.4,0.7-0.2,1C-104.3,399.2-104.3,399.3-104.2,399.3z M-106.8,394.7v8.2 c0,0.4,0.3,0.7,0.7,0.7c0.4,0,0.7-0.3,0.7-0.7v-8.2c0-0.4-0.3-0.7-0.7-0.7C-106.5,393.9-106.8,394.2-106.8,394.7z M-101.3,415.5 c-9.3,0-16.8-7.5-16.8-16.8s7.5-16.8,16.8-16.8s16.8,7.5,16.8,16.8S-92,415.5-101.3,415.5z"
+                             fill="#1296db"/>
+                </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#togglePlay" prefHeight="50.0" prefWidth="50.0"
+                    style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <graphic>
+                    <SVGPath fx:id="playOrPauseSvg"
+                             content="M-44.7,455.9c-8.7,0-15.8,7.1-15.8,15.8s7.1,15.8,15.8,15.8s15.8-7.1,15.8-15.8 C-28.8,463-35.9,455.9-44.7,455.9z M-37.7,472.5l-9.1,6.8c-0.2,0.1-0.3,0.2-0.5,0.2c-0.5,0-0.9-0.4-0.9-0.9l0,0v-13.7 c0-0.5,0.4-0.9,0.9-0.9c0.2,0,0.4,0.1,0.5,0.2l9.1,6.8c0.4,0.3,0.5,0.9,0.2,1.3C-37.6,472.4-37.7,472.4-37.7,472.5z"
+                             fill="#1296db" scaleX="1.4" scaleY="1.4"/>
+                </graphic>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#next" prefHeight="50.0" prefWidth="50.0"
+                    style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <graphic>
+                    <SVGPath fx:id="next"
+                             content="M-98.3,398.2l-6.8-4.6c-0.3-0.2-0.8-0.1-1,0.2c-0.1,0.1-0.1,0.3-0.1,0.4v9.3c0,0.4,0.3,0.7,0.7,0.7 c0.2,0,0.3,0,0.4-0.1l6.8-4.6c0.3-0.2,0.4-0.7,0.2-1C-98.2,398.3-98.2,398.2-98.3,398.2z M-95.7,402.8v-8.2c0-0.4-0.3-0.7-0.7-0.7 c-0.4,0-0.7,0.3-0.7,0.7v8.2c0,0.4,0.3,0.7,0.7,0.7C-96,403.6-95.7,403.3-95.7,402.8z M-101.3,382c9.3,0,16.8,7.5,16.8,16.8 s-7.5,16.8-16.8,16.8S-118,408-118,398.8S-110.5,382-101.3,382z"
+                             fill="#1296db"/>
+                </graphic>
+            </Button>
+            <Text fx:id="currentTime" strokeType="OUTSIDE" strokeWidth="0.0" text="00 : 00"/>
+            <StackPane fx:id="musicPane" prefHeight="10.0" prefWidth="320.0" stylesheets="@../javafxcss/StackPane.css"/>
+            <Text fx:id="totalTime" strokeType="OUTSIDE" strokeWidth="0.0" text="00 : 00"/>
+            <Button mnemonicParsing="false" onAction="#toggleSound" prefHeight="30.0" prefWidth="30.0"
+                    style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <graphic>
+                    <SVGPath fx:id="sound"
+                             content="M-32,472.3C-32,472.3-32,472.3-32,472.3l-2.3,0c-0.4,0-0.8,0.3-0.8,0.8v5.4c0,0.4,0.3,0.8,0.8,0.8h2.3c0,0,0,0,0,0v0l5.6,3.6c0.1,0.1,0.3,0.2,0.5,0.2c0.4,0,0.8-0.3,0.8-0.8c0,0,0-0.1,0-0.1v-12.8c0,0,0-0.1,0-0.1c0-0.4-0.3-0.8-0.8-0.8c-0.2,0-0.3,0.1-0.5,0.2L-32,472.3zM-21.4,484.4L-21.4,484.4c2.4-2.1,4-5.2,4-8.7c0-3.5-1.5-6.6-4-8.7l0,0c-0.1-0.1-0.2-0.1-0.4-0.1c-0.3,0-0.6,0.3-0.6,0.6c0,0.1,0,0.3,0.1,0.4l0,0c0,0,0,0,0,0c0,0,0,0,0.1,0.1c2.2,1.9,3.5,4.7,3.5,7.8s-1.4,5.9-3.5,7.8c0,0-0.1,0-0.1,0.1c0,0,0,0,0,0l0,0c-0.1,0.1-0.1,0.2-0.1,0.4c0,0.3,0.3,0.6,0.6,0.6C-21.7,484.5-21.5,484.5-21.4,484.4zM-22.3,480L-22.3,480c1.1-1.1,1.8-2.6,1.8-4.3c0-1.7-0.7-3.2-1.8-4.3l0,0c-0.1-0.1-0.2-0.1-0.3-0.1c-0.3,0-0.6,0.3-0.6,0.6c0,0.1,0,0.2,0.1,0.3l0,0c0,0,0,0,0,0c0,0,0,0,0,0c0.9,0.9,1.4,2.1,1.4,3.4s-0.5,2.5-1.4,3.4c0,0,0,0,0,0c0,0,0,0,0,0l0,0c-0.1,0.1-0.1,0.2-0.1,0.3c0,0.3,0.3,0.6,0.6,0.6C-22.5,480.1-22.4,480.1-22.3,480z"
+                             fill="#676767"/>
+                </graphic>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+            <StackPane fx:id="soundPane" prefHeight="14.0" prefWidth="100.0" stylesheets="@../javafxcss/StackPane.css"/>
+            <Button fx:id="lyricBig" mnemonicParsing="false" onAction="#toggleLyricPane"
+                    style="-fx-background-color: rgba(255, 255, 255, 0);">
+                <graphic>
+                    <SVGPath fx:id="lyricBigSvg"
+                             content="M-42.9,455.4h-4v4h4C-42.9,459.4-42.9,455.4-42.9,455.4z M-43.9,458.3h-1.8v-2h1.8V458.3L-43.9,458.3z M-47.2,453.2h4.8v1.1h-4.8V453.2zM-47.5,452h5.7v8c0,0.4-0.2,0.6-0.5,0.6l-1.4,0l0.3,1.1h1.3c1,0,1.5-0.5,1.5-1.4v-9.4h-6.8V452z M-48.6,453.2l0.8-0.8c-0.5-0.6-1.2-1.2-2-1.8l-0.8,0.8C-49.8,452-49.1,452.6-48.6,453.2z M-48.7,459.2v-5.1h-2.8v1.1h1.7v4.5c0,0.2-0.1,0.5-0.3,0.6l0.4,1c0.8-0.6,1.5-1.2,2.2-1.9l-0.3-1.2C-48.1,458.6-48.4,458.9-48.7,459.2zM-38,446.5h-15.7c-1,0-1.7,0.8-1.7,1.7V464c0,1,0.8,1.7,1.7,1.7H-38c1,0,1.7-0.8,1.7-1.7v-15.7C-36.3,447.3-37.1,446.5-38,446.5z M-37.6,464c0,0.2-0.2,0.4-0.4,0.4c0,0,0,0,0,0h-15.7c-0.2,0-0.4-0.2-0.4-0.4c0,0,0,0,0,0v-15.7c0-0.2,0.2-0.4,0.4-0.4c0,0,0,0,0,0H-38c0.2,0,0.4,0.2,0.4,0.4c0,0,0,0,0,0V464z"
+                             fill="#676767"/>
+                </graphic>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+        </ToolBar>
+    </Pane>
+</AnchorPane>
